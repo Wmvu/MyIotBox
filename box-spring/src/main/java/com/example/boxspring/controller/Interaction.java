@@ -80,6 +80,7 @@ public class Interaction {
         SolidityERC721 myBox = SolidityERC721.load(contractAddress,web3j,credentials,contractGasProvider);
         RemoteFunctionCall<TransactionReceipt> t = myBox.open();
         TransactionReceipt hst = t.send();
+        System.out.println(hst.getTransactionHash());
         return Result.success(hst.getTransactionHash());
     }
 @GetMapping("/isopen")
@@ -89,7 +90,13 @@ public class Interaction {
         Boolean flag = myBox.isopen(BigInteger.ZERO).send();
         return flag;
     }
-
+    @GetMapping("/arduino")
+    public String arduino() throws Exception {
+        init();
+        SolidityERC721 myBox = SolidityERC721.load(contractAddress,web3j,credentials,contractGasProvider);
+        Boolean flag = myBox.isopen(BigInteger.ZERO).send();
+        return "{"+"\"pram\":"+flag+"}";
+    }
     public BigInteger getGaslimit(String cname,Web3j web3,String Address,String contractAddress) throws IOException {
         String function = cname;
         List<Type> inputParams = Arrays.asList();

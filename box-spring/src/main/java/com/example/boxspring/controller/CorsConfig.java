@@ -15,6 +15,7 @@ public class CorsConfig {
         CorsConfiguration corsConfiguration =new CorsConfiguration();
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         corsConfiguration.addAllowedOrigin("http://localhost:8081");
+	corsConfiguration.addAllowedOrigin("http://www.wm-f.cn:8081");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedMethod("*");
         corsConfiguration.setMaxAge(MAX_AGE);

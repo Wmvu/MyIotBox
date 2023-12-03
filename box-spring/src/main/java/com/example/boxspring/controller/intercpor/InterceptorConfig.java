@@ -11,7 +11,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(interceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login","/user/register","/file/**","/export","/sms/**");
+                .excludePathPatterns("/login","/user/register","/file/**","/export","/sms/**","/api/arduino");
     }
     @Bean
     public Interceptor interceptor(){
